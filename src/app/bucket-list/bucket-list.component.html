@@ -15,10 +15,17 @@
       <div class="col-md-4">
         <h5 class="card-title">All Buckets</h5>
         <ul class="list-group">
-          <li class="list-group-item" *ngFor="let bucket of store.state().buckets">
+        @for (bucket of store.state().buckets; track bucket.id) {
+            <li class="list-group-item">
+                {{ bucket.name }}
+            </li>
+        }
+          <!-- <li class="list-group-item" *ngFor="let bucket of store.state().buckets">
             {{ bucket.name }}
-          </li>
+          </li> -->
         </ul>
       </div>
     </div>
   </div>
+
+  <cloudstorage/>

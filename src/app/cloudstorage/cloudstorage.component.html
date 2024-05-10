@@ -9,12 +9,12 @@
                 <div class="col-md-6">
 
                   <label for="name">Bucket name:</label>
-                  <input type="text" id="name" class="form-control" [(ngModel)]="user.name">
+                  <input type="text" id="name" class="form-control" [(ngModel)]="user.name" name="username">
                 </div>
                 <div class="col-md-6">
 
                   <label for="location">Bucket Location:</label>
-                  <select id="location" class="form-control" [(ngModel)]="user.location">
+                  <select id="location" class="form-control" [(ngModel)]="user.location" name="location">
                     <option value="">Select a location</option>
                     <option value="kranj">Kranj</option>
                     <option value="ljubljana">Ljubljana</option>
