@@ -7,10 +7,12 @@
             <form (ngSubmit)="onSubmit()">
               <div class="form-group row">
                 <div class="col-md-6">
+
                   <label for="name">Bucket name:</label>
                   <input type="text" id="name" class="form-control" [(ngModel)]="user.name">
                 </div>
                 <div class="col-md-6">
+
                   <label for="location">Bucket Location:</label>
                   <select id="location" class="form-control" [(ngModel)]="user.location">
                     <option value="">Select a location</option>
@@ -25,14 +27,5 @@
         </div>
       </div>
     </div>
-    <div class="row justify-content-center">
-      <div class="col-md-4">
-        <h5 class="card-title">All Buckets</h5>
-        <ul class="list-group">
-          <li class="list-group-item" *ngFor="let bucket of buckets">
-            {{ bucket.name }} ({{ bucket.location }})
-          </li>
-        </ul>
-      </div>
-    </div>
   </div>
+  
