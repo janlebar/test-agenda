@@ -15,7 +15,7 @@
       <div class="col-md-4">
         <h5 class="card-title">All Buckets</h5>
         <ul class="list-group">
-          <li class="list-group-item" *ngFor="let bucket of buckets">
+          <li class="list-group-item" *ngFor="let bucket of store.state().buckets">
             {{ bucket.name }}
           </li>
         </ul>
