@@ -52,4 +52,17 @@ export class StoreService {
       return newState;
     })
   }
+
+
+  deleteBucket(id: number) {
+    this.state.update((oldState) => {
+      const newState: State = {
+       ...oldState,
+        buckets: oldState.buckets.filter((bucket) => bucket.id!== id),
+      };
+      return newState;
+    });
+  }
+
 }
+

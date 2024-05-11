@@ -14,4 +14,12 @@ import { CloudStorageComponent } from '../cloudstorage/cloudstorage.component';
 })
 export class BucketListComponent {
   store: StoreService = inject(StoreService);
+
+  deleteBucket(id: number) {
+    this.store.deleteBucket(id);
+  }
 }
+
+
+
+

@@ -19,6 +19,7 @@
             <li class="list-group-item">
                 {{ bucket.name }}
                 {{ bucket.location }}
+                <button class="btn btn-danger" (click)="deleteBucket(bucket.id)">Delete</button>
             </li>
         }
           <!-- <li class="list-group-item" *ngFor="let bucket of store.state().buckets">
