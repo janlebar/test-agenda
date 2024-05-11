@@ -17,8 +17,10 @@
         <ul class="list-group">
         @for (bucket of store.state().buckets; track bucket.id) {
             <li class="list-group-item">
+                <button class="btn btn-link" [routerLink]="['/bucket', bucket.id]">
                 {{ bucket.name }}
                 {{ bucket.location }}
+            </button>
                 <button class="btn btn-danger" (click)="deleteBucket(bucket.id)">Delete</button>
             </li>
         }
