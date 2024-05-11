@@ -18,6 +18,7 @@
         @for (bucket of store.state().buckets; track bucket.id) {
             <li class="list-group-item">
                 {{ bucket.name }}
+                {{ bucket.location }}
             </li>
         }
           <!-- <li class="list-group-item" *ngFor="let bucket of store.state().buckets">

@@ -4,6 +4,7 @@ import { Injectable, computed, effect, inject, signal } from '@angular/core';
 type Bucket = {
   id: number;
   name: string;
+  location: string;
 };
 
 type State = {
