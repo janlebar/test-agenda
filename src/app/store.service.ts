@@ -55,6 +55,7 @@ export class StoreService {
 
 
   deleteBucket(id: number) {
+    console.log(id+"tuki")
     this.state.update((oldState) => {
       const newState: State = {
        ...oldState,
