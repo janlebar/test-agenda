@@ -25,7 +25,7 @@ export class CloudStorageComponent {
     // Add the new bucket to the list
   
 
-    this.store.createBucket({id: 10, name: this.user.name, location: this.user.location});
+    this.store.createBucket({id: 0, name: this.user.name, location: this.user.location, files: []});
   }
 }
 

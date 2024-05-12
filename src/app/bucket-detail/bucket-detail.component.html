@@ -2,12 +2,16 @@
   <div class="container">
     <h1>Bucket Detail</h1>
     <div>
-      <p>Name: {{ bucket?.name }}</p>
-      <p>Location: {{ bucket?.location }}</p>
+      <p>Name: {{ bucketSignal().name }}</p>
+      <p>Location: {{ bucketSignal().location }}</p>
     </div>
     <!-- Add file input element -->
     <div>
       <input type="file" (change)="onFileSelected($event)" />
     </div>
+
+    @for (file of bucketSignal().files; track file) {
+        <a>{{ file }}</a>
+    }
   </div>
   

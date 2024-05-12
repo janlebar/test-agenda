@@ -1,10 +1,11 @@
 import { DOCUMENT } from '@angular/common';
-import { Injectable, computed, effect, inject, signal } from '@angular/core';
+import { Inject, Injectable, afterNextRender, computed, effect, signal } from '@angular/core';
 
-type Bucket = {
+export type Bucket = {
   id: number;
   name: string;
   location: string;
+  files: string[];
 };
 
 type State = {
@@ -14,34 +15,44 @@ type State = {
 
 const initalState: State = {
   lastBucketID: 0,
-  buckets: []
+  buckets: [],
 };
 
 @Injectable({
   providedIn: 'root'
 })
 export class StoreService {
-  localStorage = inject(DOCUMENT).defaultView?.localStorage!;
-
   state = signal<State>(initalState);
 
   readonly buckets = computed(() => this.state().buckets);
 
   constructor() {
-    let localState = this.localStorage.getItem("state");
+      //const localStorage = document.defaultView?.localStorage!;
+
+    let localState = localStorage?.getItem("state");
 
     if (localState) {
       this.state.set(JSON.parse(localState));
     }
 
     effect(() => {
+      console.log("state",  this.state());
       let state = this.state();
-      this.localStorage.setItem("state", JSON.stringify(state));
+      localStorage?.setItem("state", JSON.stringify(state));
     })
+  }
+
+  getBucket(id: number) {
+    return computed(() => {
+      let bucket = this.state().buckets.find((bucket) => bucket.id == id);
+      return bucket!;
+    });
   }
 
   createBucket(bucket: Bucket) {
     this.state.update((oldState) => {
+      bucket.id = oldState.lastBucketID;
+
       let newState: State = {
         lastBucketID: oldState.lastBucketID + 1,
         buckets: [bucket]
@@ -59,11 +70,22 @@ export class StoreService {
     this.state.update((oldState) => {
       const newState: State = {
        ...oldState,
-        buckets: oldState.buckets.filter((bucket) => bucket.id!== id),
+        buckets: oldState.buckets.filter((bucket) => bucket.id !== id),
       };
       return newState;
     });
   }
 
+  createFile(bucketId: number, fileName: string) {
+    this.state.update((oldState) => {
+      // bucket we want to add file to
+      let bucket = oldState.buckets.find((bucket) => bucket.id == bucketId);
+      bucket?.files?.push(fileName);
+
+      console.log(bucket?.files);
+
+      return {...oldState};
+    })
+  }
 }
 
