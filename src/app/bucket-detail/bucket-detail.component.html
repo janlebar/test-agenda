@@ -19,7 +19,7 @@
 
 
             <div>
-                <label for="fileInput" class="btn btn-danger">Upload Object</label>
+                <label for="fileInput" class="btn btn-success">Upload Object</label>
                 <input type="file" id="fileInput" style="display:none;" (change)="onFileSelected($event)" />
             </div>
             
@@ -33,6 +33,9 @@
                   </div>
                   <div class="col">
                     <p>{{ bucketSignal().location }}</p>
+                  </div>
+                  <div class="col">
+                    <button class="btn btn-danger" (click)="deleteFile(bucketId, file)">Delete</button>
                   </div>
                 </div>
               </li>

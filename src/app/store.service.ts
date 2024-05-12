@@ -87,5 +87,16 @@ export class StoreService {
       return {...oldState};
     })
   }
+
+  deleteFile(bucketId: number, fileName: string) {
+    this.state.update((oldState) => {
+      const bucket = oldState.buckets.find((bucket) => bucket.id === bucketId);
+      if (bucket) {
+        bucket.files = bucket.files.filter((file) => file !== fileName);
+      }
+      return { ...oldState };
+    });
+  }
+  
 }
 

@@ -23,4 +23,8 @@ export class BucketDetailComponent {
 
     this.store.createFile(this.bucketId, file.name);
   }
+
+  deleteFile(bucketId: number, fileName: string) {
+    this.store.deleteFile(bucketId, fileName);
+  }
 }
