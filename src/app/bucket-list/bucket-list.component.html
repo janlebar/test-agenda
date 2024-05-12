@@ -1,33 +1,52 @@
 <div class="container">
     <div class="row justify-content-center">
-      <div class="col-md-4">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Create Bucket</h5>
-            <nav>
-              <button class="btn btn-primary" routerLink="/cloudstorage" type="submit">Create Bucket</button>
-            </nav>
-          </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Create Bucket</h5>
+                    <nav>
+                        <button class="btn btn-primary" routerLink="/cloudstorage" type="submit">Create Bucket</button>
+                    </nav>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
+</div>
+
+<div class="container mt-5">
     <div class="row justify-content-center">
-      <div class="col-md-4">
-        <h5 class="card-title">All Buckets</h5>
-        <ul class="list-group">
-        @for (bucket of store.state().buckets; track bucket.id) {
-            <li class="list-group-item">
-                <button class="btn btn-link" [routerLink]="['/bucket', bucket.id]">
-                {{ bucket.name }}
-                {{ bucket.location }}
-            </button>
-                <button class="btn btn-danger" (click)="deleteBucket(bucket.id)">Delete</button>
-            </li>
-        }
-          <!-- <li class="list-group-item" *ngFor="let bucket of store.state().buckets">
-            {{ bucket.name }}
-          </li> -->
-        </ul>
-      </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">All Buckets</h5>
+
+                    <div class="row">
+                        <div class="col">
+                            <p>Name</p>
+                        </div>
+                        <div class="col">
+                            <p>Location</p>
+                        </div>
+                    </div>
+
+                    <ul class="list-group">
+                        @for (bucket of store.state().buckets; track bucket.id) {
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col">
+                                        <button class="btn btn-link" [routerLink]="['/bucket', bucket.id]">{{ bucket.name }}</button>
+                                    </div>
+                                    <div class="col">
+                                        {{ bucket.location }}
+                                        <button class="btn btn-danger" (click)="deleteBucket(bucket.id)">Delete</button>
+                                    </div>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
+</div>
+
